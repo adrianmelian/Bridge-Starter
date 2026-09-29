@@ -23,8 +23,8 @@ source code or moving every conversation into one agent's app.
 contains the cards, reports, previews and files they produce. You can minimize
 either window independently while continuing in a browser, Blender or another app.
 
-Drag chat tabs to reorder them. Pinned tabs stay ahead of ordinary tabs, and can
-be reordered within their own group. Use History to find and pin conversations
+Chat tabs move to the front when a message is sent or an agent replies. Pins
+mark favorites in History. Use History to find and pin conversations
 you want to return to. Closing a tab and deleting a project's files are separate
 actions. Conversation recovery also depends on the selected CLI's native history.
 
