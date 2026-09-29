@@ -4,6 +4,33 @@ A Windows desktop workspace for your own Codex and Claude chats, local files,
 project reports and browser tabs. This edition starts with **zero projects and
 zero conversations**. It includes no previous owner's data or accounts.
 
+## Start with an agent
+
+Install and sign in to at least one supported CLI with your own account first:
+[Codex CLI](https://developers.openai.com/codex/cli) or
+[Claude Code CLI](https://code.claude.com/docs/en/setup).
+
+Then get your own copy of this workspace. Either press **Use this template** on
+GitHub to create your own repository and clone it into a folder you control, or
+download **Bridge-Starter-0.1.2.zip** from Releases and extract it to a permanent
+folder such as `Documents/My Bridge`. Open that folder in your Codex CLI or Claude
+Code CLI and paste:
+
+> Set up this Bridge starter workspace on my Windows computer. Read AGENTS.md,
+> README.md and docs/getting-started.md first. Check that I am on Windows x64 and
+> that Codex CLI or Claude Code CLI is installed and signed in with my own account.
+> Help me install The Bridge from this repository's latest release, unless I ask to
+> build from source, then open it with Start Bridge.cmd and select this folder.
+> Leave optional voice, dictation, paid providers and MCP connections off until I
+> choose to connect them. Keep any credentials in the ignored .env file and never
+> commit them. Do not publish anything or make paid calls without asking me. Then
+> help me set my ship, captain and assistant names in bridge.json, record my
+> preferences in context/, and create my first project.
+
+The repository contains the app source, instructions and an empty workspace. You
+bring your own agent accounts and any services you choose to connect. Prefer to do
+it by hand? Follow the Quick start below.
+
 ## Quick start (no developer tools needed)
 
 1. Download **Bridge-Starter-0.1.2.zip** from this repository's Releases.
