@@ -59,6 +59,6 @@ Your own workspace can be private; choose its Git destination before publishing.
 ## Build from source
 
 Install Node.js 22.20+, Rust/MSVC and Tauri's Windows build prerequisites, then run
-`npm ci`, `npm test`, and `npm run desktop:build`. The installer appears under
+`npm ci`, `npm test`, then `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/build-starter.ps1`. The installer appears under
 `src-tauri/target/release/bundle/nsis/`. Normal users should use the release ZIP.
 See [getting started](docs/getting-started.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
