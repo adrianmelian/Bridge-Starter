@@ -1,0 +1,7 @@
+.image-context-menu{position:fixed;inset:auto;margin:0;padding:5px;width:250px;border:1px solid #535363;border-radius:8px;background:#20212b;color:#eeeeF4;box-shadow:0 8px 28px #0009;z-index:2147483647;font:13px system-ui}
+.image-context-menu button{display:block;width:100%;border:0;border-radius:4px;padding:10px 12px;text-align:left;background:transparent;color:inherit;font:inherit;cursor:pointer}
+.image-context-menu button:hover,.image-context-menu button:focus-visible{background:#3b4055;outline:none}
+.image-context-menu button:disabled{opacity:.45;cursor:default}
+.image-context-menu small{display:block;padding:5px 12px;color:#bcbccb;line-height:1.4}
+.image-action-status{position:fixed;bottom:18px;left:18px;z-index:10000;padding:10px 14px;background:#252a36;color:#eee;border:1px solid #555c70;border-radius:8px;font-size:13px}
+.image-action-status button{margin-left:12px;border:0;background:transparent;color:inherit;cursor:pointer}

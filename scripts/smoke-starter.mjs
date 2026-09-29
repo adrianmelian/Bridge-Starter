@@ -1,0 +1,35 @@
+import {chromium,expect} from '@playwright/test';
+import {mkdtemp,mkdir,writeFile} from 'node:fs/promises';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {createService} from '../.cache/desktop-runtime/service/server.mjs';
+const root=process.cwd();
+const repo=await mkdtemp(path.join(root,'.cache/starter-smoke-'));
+await mkdir(path.join(repo,'workspace'));
+await writeFile(path.join(repo,'workspace/workspace.json'),'{{"entities":[]}}'.replace('{{','{').replace('}}','}'));
+await writeFile(path.join(repo,'bridge.json'),JSON.stringify({shipName:'My New Ship',captainName:'Captain Example',assistantName:'Navigator'}));
+const service=await createService({repo,uiDir:path.join(root,'.cache/desktop-runtime/ui'),mcpOptions:{home:repo,env:{}}});
+let browser;
+try {
+ assert.deepEqual(service.sessions.list(),[]);
+ browser=await chromium.launch({channel:'msedge',headless:true});
+ const page=await browser.newPage({viewport:{width:1100,height:850}});const errors=[];page.on('pageerror',error=>errors.push(error.message));
+ await page.goto(service.urls.chats);
+ await expect(page.getByRole('button',{name:'Open your first chat'})).toBeVisible();
+ await expect(page.locator('.chats-brand')).toContainText('My New Ship');
+ assert.equal(await page.locator('[data-chat-tab]').count(),0);
+ await page.screenshot({path:path.join(root,'.cache/starter-empty.png')});
+ await page.goto(service.urls.workspace);
+ await page.waitForTimeout(1000);
+ assert.deepEqual(errors,[]);
+ await page.screenshot({path:path.join(root,'.cache/starter-workspace.png')});
+ const s=service.sessions.make({id:'fixture',name:'First Project',agent:'codex',cwd:repo,open:true,status:'stopped',cols:90,rows:30,createdAt:new Date().toISOString()});service.sessions.items.set(s.id,s);await service.sessions.hydrate(s);
+ await page.route('**/api/sessions/*/conversation*',route=>route.fulfill({json:{available:true,version:1,items:[{id:'u',kind:'message',role:'user',text:'Hello',phase:''},{id:'a',kind:'message',role:'assistant',text:'Welcome aboard.',phase:'final'}]}}));
+ await page.route('**/api/sessions/*/options*',route=>route.fulfill({json:{models:[],commands:[]}}));
+ await page.route('**/api/sessions/*/updates*',route=>route.fulfill({json:{supported:false,available:false}}));
+ await page.goto(service.urls.chats);
+ await expect(page.getByRole('article',{name:'Your message',exact:true})).toContainText('Captain Example');
+ await expect(page.getByRole('article',{name:'Assistant message',exact:true})).toContainText('Navigator');
+ assert.deepEqual(errors,[]);
+ console.log('PASS: packaged service starts empty, workspace renders, custom ship and message labels work; no live agents started.');
+} finally {await browser?.close();await service.close();}

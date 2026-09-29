@@ -1,0 +1,48 @@
+{
+  "name": "data-workspace",
+  "private": true,
+  "version": "0.1.2",
+  "type": "module",
+  "scripts": {
+    "predev": "node scripts/ensure-workspace-link.mjs",
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint src",
+    "preview": "vite preview",
+    "desktop:service": "node desktop/service/main.mjs",
+    "desktop:prepare": "node desktop/prepare.mjs",
+    "desktop:build": "tauri build",
+    "desktop:dev": "tauri dev",
+    "test": "node scripts/check-starter.mjs",
+    "test:template": "node scripts/check-starter.mjs"
+  },
+  "dependencies": {
+    "@types/three": "^0.185.4",
+    "@xterm/addon-fit": "^0.11.0",
+    "@xterm/xterm": "^6.0.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.63.0",
+    "@tauri-apps/cli": "^2.11.4",
+    "@types/node": "^24.12.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^10.4.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.61.0",
+    "vite": "^8.0.4"
+  },
+  "engines": {
+    "node": ">=22.20.0"
+  }
+}

@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {readFile,readdir} from 'node:fs/promises';
+const json=async p=>JSON.parse(await readFile(p,'utf8'));
+assert.deepEqual((await json('workspace/workspace.json')).entities,[]);
+assert.deepEqual(await json('.mcp.json'),{mcpServers:{}});
+for(const folder of ['projects','knowledge','processes','inbox']) assert.deepEqual(await readdir(folder),['.gitkeep']);
+assert.doesNotMatch(await readFile('.env.example','utf8'),/^\w+=\S+/m);
+assert.match(await readFile('desktop/service/server.mjs','utf8'),/defaultBypass: false/);
+assert.deepEqual(await json('bridge.json'),{shipName:'The Bridge',captainName:'Captain',assistantName:'Commander Data'});
+assert.match(await readFile('src/desktop/ConversationView.tsx','utf8'),/settings.captainName/);
+console.log('PASS: empty workspace, generic identity, no project content, empty connections and safe defaults.');

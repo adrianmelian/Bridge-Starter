@@ -1,0 +1,20 @@
+.workspace-browser{height:100%;display:flex;flex-direction:column;min-width:0;background:#101217;color:#dce1ed}
+.browser-tabs{display:flex;align-items:stretch;gap:4px;padding:6px 8px 0;min-height:40px;overflow-x:auto;flex-shrink:0;background:#0c0e12}
+.browser-tabs button,.browser-toolbar button{border:0;background:transparent;color:inherit;cursor:pointer;font:inherit;border-radius:6px;padding:6px 10px;white-space:nowrap}
+.browser-tabs>button[aria-selected=true],.browser-tab.selected{background:#252a35}
+.browser-tab{display:flex;min-width:100px;max-width:220px;border-radius:7px 7px 0 0;flex-shrink:0}
+.browser-tab>button[role=tab]{overflow:hidden;text-overflow:ellipsis;max-width:185px;text-align:left;flex:1}
+.browser-tab .browser-close{padding:4px 8px;color:#aab4c6}
+.browser-tabs button:hover,.browser-toolbar button:hover{background:#303746}
+.browser-tabs .browser-new{font-size:22px;line-height:20px}
+.browser-toolbar{display:flex;gap:5px;padding:7px 9px;align-items:center;border-bottom:1px solid #303543;min-height:44px;flex-shrink:0}
+.browser-toolbar input{flex:1;min-width:0;border:1px solid #343c4c;border-radius:7px;background:#191e28;padding:7px 12px;color:#e5eaf5;font:inherit;font-size:13px}
+.browser-toolbar input:focus{outline:1px solid #77a4ec}
+.browser-toolbar button:disabled,.browser-tabs button:disabled{opacity:.35;cursor:default}
+.browser-stage{position:relative;flex:1;min-height:0;overflow:hidden}
+.browser-home{height:100%}
+.browser-empty{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center;color:#aab4c6;gap:12px}
+.browser-empty h2{color:#e2e9f5;font-size:24px}
+.browser-empty p{margin:0;overflow-wrap:anywhere}
+.browser-error{padding:8px 12px;background:#4b252c;color:#ffd1d5;font-size:13px;flex-shrink:0}
+.workspace-browser-active .voice-dock{display:none}
